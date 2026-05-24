@@ -160,5 +160,6 @@ In production this can be triggered using:
 <img width="1920" height="1080" alt="Screenshot (189)" src="https://github.com/user-attachments/assets/380a524d-7ca0-4752-b373-4f710d41f343" />
 <img width="1920" height="1080" alt="Screenshot (190)" src="https://github.com/user-attachments/assets/cb05db59-c447-418c-b56b-afa5b4a69c03" />
 <img width="1920" height="1080" alt="Screenshot (191)" src="https://github.com/user-attachments/assets/6cf01fc7-8657-4600-bc96-358b62f32b07" />
+<img width="1920" height="1080" alt="Screenshot (192)" src="https://github.com/user-attachments/assets/1b19faee-dad2-4511-bfbc-5f3066683e11" />
 
 
