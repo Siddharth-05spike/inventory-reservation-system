@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inventory Reservation System
 
-## Getting Started
+A full-stack inventory reservation system built with Next.js, Prisma, PostgreSQL (Neon), and TypeScript.
 
-First, run the development server:
+The application allows users to reserve products from warehouses, confirm purchases, cancel reservations, and automatically release expired reservations.
+
+---
+
+# Features
+
+## Backend
+
+- Product and warehouse inventory management
+- Reservation system with:
+  - PENDING
+  - CONFIRMED
+  - CANCELLED
+  - RELEASED statuses
+- Reservation expiry handling
+- Automatic stock restoration
+- Concurrency-safe reservation logic
+- REST APIs using Next.js App Router
+
+## Frontend
+
+- Product listing page
+- Real-time stock display
+- Reserve product flow
+- Reservation checkout page
+- Live countdown timer
+- Confirm purchase button
+- Cancel reservation button
+- Automatic UI updates after actions
+
+---
+
+# Tech Stack
+
+- Next.js 15 (App Router)
+- TypeScript
+- Prisma ORM
+- PostgreSQL (Neon)
+- Tailwind CSS
+- React
+
+---
+
+# API Endpoints
+
+## Products
+
+### GET `/api/products`
+
+Returns all products with stock availability per warehouse.
+
+---
+
+## Warehouses
+
+### GET `/api/warehouses`
+
+Returns all warehouses.
+
+---
+
+## Reservations
+
+### POST `/api/reservation`
+
+Creates a reservation.
+
+Returns:
+- `200` on success
+- `409` if stock is unavailable
+
+---
+
+### POST `/api/reservation/:id/confirm`
+
+Confirms a reservation.
+
+Returns:
+- `200` on success
+- `410` if reservation expired
+
+---
+
+### POST `/api/reservation/:id/cancel`
+
+Cancels a reservation and restores stock.
+
+---
+
+### POST `/api/release-expired`
+
+Releases expired reservations automatically.
+
+---
+
+# Database Schema
+
+Main entities:
+
+- Product
+- Warehouse
+- Inventory
+- Reservation
+
+Inventory tracks:
+- totalQuantity
+- reservedQuantity
+- availableQuantity
+
+Reservations contain:
+- status
+- quantity
+- expiresAt
+
+---
+
+# Concurrency Handling
+
+The reservation endpoint is designed to be concurrency-safe.
+
+Implementation approach:
+- Prisma database transactions
+- Atomic conditional inventory updates using `updateMany`
+- Stock updates occur only if enough inventory is available
+
+This guarantees that when two requests attempt to reserve the final unit simultaneously:
+- only one succeeds
+- the other receives a `409 Conflict`
+
+---
+
+# Reservation Expiry
+
+Reservations contain an `expiresAt` timestamp.
+
+Expired reservations are released using:
+- `/api/release-expired`
+
+This endpoint:
+1. Finds expired PENDING reservations
+2. Restores reserved stock
+3. Updates reservation status to RELEASED
+
+In production this can be triggered using:
+- Vercel Cron Jobs
+- Background workers
+- Scheduled jobs
+
+---
+
+# Running Locally
+
+## 1. Clone repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone <repo-url>
