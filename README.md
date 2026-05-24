@@ -152,13 +152,6 @@ In production this can be triggered using:
 
 ---
 
-# Running Locally
-
-## 1. Clone repository
-
-```bash
-git clone <repo-url>
-
 # Output Screen Shots
 <img width="1920" height="1080" alt="Screenshot (183)" src="https://github.com/user-attachments/assets/43f91e4f-197f-40ce-badf-8d557972532f" />
 <img width="1920" height="1080" alt="Screenshot (186)" src="https://github.com/user-attachments/assets/2b3cce6e-b7ba-416e-b6e1-77b32cc3db4f" />
