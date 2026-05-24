@@ -158,3 +158,14 @@ In production this can be triggered using:
 
 ```bash
 git clone <repo-url>
+
+# Output Screen Shots
+<img width="1920" height="1080" alt="Screenshot (183)" src="https://github.com/user-attachments/assets/43f91e4f-197f-40ce-badf-8d557972532f" />
+<img width="1920" height="1080" alt="Screenshot (186)" src="https://github.com/user-attachments/assets/2b3cce6e-b7ba-416e-b6e1-77b32cc3db4f" />
+<img width="1920" height="1080" alt="Screenshot (187)" src="https://github.com/user-attachments/assets/d9a28910-6396-464c-9cc0-1bebb29e934b" />
+<img width="1920" height="1080" alt="Screenshot (188)" src="https://github.com/user-attachments/assets/0c2baed0-06de-4d57-bb5d-5a5f0f06c6ee" />
+<img width="1920" height="1080" alt="Screenshot (189)" src="https://github.com/user-attachments/assets/380a524d-7ca0-4752-b373-4f710d41f343" />
+<img width="1920" height="1080" alt="Screenshot (190)" src="https://github.com/user-attachments/assets/cb05db59-c447-418c-b56b-afa5b4a69c03" />
+<img width="1920" height="1080" alt="Screenshot (191)" src="https://github.com/user-attachments/assets/6cf01fc7-8657-4600-bc96-358b62f32b07" />
+
+
